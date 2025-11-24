@@ -1,0 +1,197 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: white;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+/* COLUMNA IZQUIERDA */
+.left {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-x {
+    width: 450px;
+}
+
+/* COLUMNA DERECHA */
+.right {
+    flex: 1;
+    padding-left: 40px;
+}
+
+.title {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.subtitle {
+    margin-top: 30px;
+    font-size: 28px;
+}
+
+/* BOTONES SOCIALES */
+.social-btn {
+    width: 330px;
+    padding: 12px;
+    margin-top: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    border: 1px solid #E1E1E1;
+    border-radius: 50px;
+    background: white;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background 0.2s;
+}
+
+.social-btn:hover {
+    background: #F5F5F5; /* hover igual que X */
+}
+
+.icon {
+    width: 20px;
+}
+
+/* DIVISOR O */
+.divider {
+    text-align: center;
+    margin: 20px 0;
+    font-weight: bold;
+    font-size: 16px;
+    width: 330px;  
+}
+
+/* BOTÓN CREAR CUENTA */
+.create-btn {
+    width: 330px;
+    padding: 12px;
+    border-radius: 50px;
+    border: none;
+    background: black;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.create-btn:hover {
+    opacity: 0.85;
+}
+
+/* TERMS CON LINKS AZULES */
+.terms {
+    margin-top: 10px;
+    font-size: 12px;
+    width: 330px;
+    color: #555;
+    line-height: 17px;
+}
+
+.terms a {
+    color: #1DA1F2;  /* azul como X */
+    text-decoration: none;
+}
+
+.terms a:hover {
+    text-decoration: underline;
+}
+
+.question {
+    margin-top: 25px;
+}
+
+/* BOTÓN INICIAR SESIÓN */
+.login-btn {
+    width: 330px;
+    padding: 12px;
+    margin-top: 5px;
+
+    border-radius: 50px;
+    border: 1px solid #D9D9D9;
+    background: white;
+
+    cursor: pointer;
+    font-size: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: background 0.2s;
+}
+
+.login-btn:hover {
+    background: #F5F5F5;
+}
+
+/* BOTÓN OBTÉN GROK */
+.grok-btn {
+    width: 330px;
+    padding: 12px;
+    margin-top: 10px;
+
+    border-radius: 50px;
+    border: 1px solid #D9D9D9;
+    background: white;
+
+    cursor: pointer;
+    font-size: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    transition: background 0.2s;
+}
+
+.grok-btn:hover {
+    background: #F5F5F5;
+}
+
+/* FOOTER ESTILO */
+.footer {
+    width: 100%;
+    text-align: center;
+    margin-top: 40px;
+    color: #71767B;
+    font-size: 13px;
+    line-height: 20px;
+}
+
+.footer a {
+    color: #71767B;
+    text-decoration: none;
+    margin: 0 4px;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+    color: #71767B; /* MISMO gris, exacto como X */
+}
+
+.footer span {
+    color: #71767B;
+    margin: 0 4px;
+}
+
+.footer {
+    font-size: 11px;      /* REDUCE TAMAÑO */
+    line-height: 1.8;     /* AUMENTA INTERLINEADO */
+}
