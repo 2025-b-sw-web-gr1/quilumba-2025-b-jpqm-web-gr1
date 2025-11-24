@@ -1,0 +1,2 @@
+/* imported.css: archivo importado desde external.css con @import */
+.imported { color: darkgreen; background: #f0fff0; padding:6px; }

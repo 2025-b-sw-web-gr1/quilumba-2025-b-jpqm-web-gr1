@@ -1,0 +1,3 @@
+/* dynamic.css: utilizado para demostración de carga dinámica */
+.dynamic { color: white; background: linear-gradient(90deg,#7b61ff,#4ad1e5); padding:8px; border-radius:4px; }
+.fetched { color: #002; background: linear-gradient(90deg,#bfffbf,#f0fff0); padding:8px; border-radius:4px; }

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Formas de cargar estilos — Demo educativa</title>
+  <link rel="stylesheet" href="css/external.css" />
+  <!-- external.css importa imported.css (ejemplo de @import) -->
+  <style>
+    /* Estilos internos (etiqueta <style>) */
+    .internal {
+      color: green;
+      font-weight: bold;
+    }
+    .box { padding: 12px; border-radius:6px; margin-bottom:8px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Formas de cargar estilos en una página web</h1>
+
+    <section class="box">
+      <h2>1) Inline: atributo <code>style</code></h2>
+      <p style="color:royalblue; background:#eef; padding:6px;">Este párrafo usa <strong>inline style</strong> con el atributo <code>style</code>.</p>
+      <p id="inline-js">Elemento que será estilado desde JS con <code>element.style</code>.</p>
+      <button id="btn-inline-js">Aplicar estilo vía JS (element.style)</button>
+    </section>
+
+    <section class="box">
+      <h2>2) Interno: etiqueta <code>&lt;style&gt;</code></h2>
+      <p class="internal">Este párrafo usa estilos definidos en la etiqueta <code>&lt;style&gt;</code> del documento.</p>
+    </section>
+
+    <section class="box">
+      <h2>3) Externo: archivo CSS enlazado con <code>&lt;link&gt;</code></h2>
+      <p class="external">Este párrafo usa clases definidas en <code>css/external.css</code>.</p>
+    </section>
+
+    <section class="box">
+      <h2>4) <code>@import</code> dentro de una hoja CSS</h2>
+      <p class="imported">La hoja <code>external.css</code> contiene un <code>@import</code> que trae <code>css/imported.css</code>.</p>
+    </section>
+
+    <section class="box">
+      <h2>5) Carga dinámica creando un elemento <code>&lt;link&gt;</code> (JavaScript)</h2>
+      <p class="dynamic">Este párrafo se estilizará cuando cargues la hoja dinámica.</p>
+      <button id="btn-load-link">Cargar hoja CSS con &lt;link&gt;</button>
+    </section>
+
+    <section class="box">
+      <h2>6) Carga por <code>fetch</code> e inyección en un &lt;style&gt; (JavaScript)</h2>
+      <p class="fetched">Este párrafo se estilizará cuando hagas fetch e inyectes el CSS.</p>
+      <button id="btn-fetch-inject">Fetch e inyectar CSS</button>
+    </section>
+
+    <section class="box">
+      <h2>7) Shadow DOM (estilos encapsulados)</h2>
+      <div id="shadow-host"></div>
+      <button id="btn-shadow">Crear elemento con Shadow DOM</button>
+    </section>
+
+    <hr />
+    <p><small>Abre las herramientas de desarrollador para ver cómo se añaden los elementos &lt;link&gt; o &lt;style&gt; dinámicamente.</small></p>
+
+  </main>
+
+  <script src="js/load-styles.js"></script>
+</body>
+</html>

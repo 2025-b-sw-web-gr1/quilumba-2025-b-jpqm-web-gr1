@@ -1,0 +1,11 @@
+/* external.css: archivo enlazado con <link>
+   Además demuestra @import de otro archivo CSS (imported.css) */
+@import url('imported.css');
+
+body { font-family: Arial, Helvetica, sans-serif; line-height:1.4; }
+.external { color: darkred; background: #fff0f0; padding:6px; }
+.box { border:1px solid #ddd; }
+
+/* estilos que pueden ser usados por la carga dinámica si se copia este archivo */
+.dynamic { color: purple; background: #f7eaff; padding:6px; }
+.fetched { color: teal; background: #eafff5; padding:6px; }
