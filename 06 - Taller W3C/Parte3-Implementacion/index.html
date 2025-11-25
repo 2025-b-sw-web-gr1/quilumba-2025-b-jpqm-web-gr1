@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Top Juegos Rankeados - Ultimate Edition</title>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1>Top Ranked <span style="color:var(--primary)">2025</span></h1>
+</header>
+
+<main class="contenedor">
+
+    <h2 class="titulo-seccion">Selección de Elite</h2>
+
+    <section class="juegos-grid" id="gridCards">
+
+        <article class="juego tilt-card">
+            <div class="img-container">
+                <img src="assets/img/elden.jpg" alt="Elden Ring" onerror="this.style.backgroundColor='#1a1a1a'"/>
+                <div class="img-overlay"></div>
+                <span class="ranking-badge">RANK #1</span>
+            </div>
+            <div class="card-content">
+                <h3>Elden Ring</h3>
+                <p>La obra maestra de mundo abierto. Desafíos brutales y una dirección artística sin precedentes.</p>
+                <div class="tags">
+                    <span class="tag">RPG</span>
+                    <span class="tag">Souls</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="juego tilt-card">
+            <div class="img-container">
+                <img src="assets/img/gow.jpg" alt="God of War" onerror="this.style.backgroundColor='#1a1a1a'"/>
+                <div class="img-overlay"></div>
+                <span class="ranking-badge">RANK #2</span>
+            </div>
+            <div class="card-content">
+                <h3>God of War Ragnarök</h3>
+                <p>Kratos y Atreus enfrentan el destino en una narrativa emocional con combate visceral.</p>
+                <div class="tags">
+                    <span class="tag">Acción</span>
+                    <span class="tag">Historia</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="juego tilt-card">
+            <div class="img-container">
+                <img src="assets/img/witcher.jpg" alt="Witcher 3" onerror="this.style.backgroundColor='#1a1a1a'"/>
+                <div class="img-overlay"></div>
+                <span class="ranking-badge">RANK #3</span>
+            </div>
+            <div class="card-content">
+                <h3>The Witcher 3 NG</h3>
+                <p>La actualización definitiva para el mejor RPG de la década. Caza monstruos con estilo.</p>
+                <div class="tags">
+                    <span class="tag">RPG</span>
+                    <span class="tag">Mundo Abierto</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="juego tilt-card">
+            <div class="img-container">
+                <img src="assets/img/valorant.jpg" alt="Valorant" onerror="this.style.backgroundColor='#1a1a1a'"/>
+                <div class="img-overlay"></div>
+                <span class="ranking-badge">RANK #4</span>
+            </div>
+            <div class="card-content">
+                <h3>Valorant</h3>
+                <p>Precisión táctica y habilidades únicas. El rey actual de los shooters competitivos.</p>
+                <div class="tags">
+                    <span class="tag">FPS</span>
+                    <span class="tag">eSports</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="juego tilt-card">
+            <div class="img-container">
+                <img src="assets/img/fortnite.jpg" alt="Fortnite" onerror="this.style.backgroundColor='#1a1a1a'"/>
+                <div class="img-overlay"></div>
+                <span class="ranking-badge">RANK #5</span>
+            </div>
+            <div class="card-content">
+                <h3>Fortnite</h3>
+                <p>Más que un juego, una plataforma cultural en constante evolución y eventos en vivo.</p>
+                <div class="tags">
+                    <span class="tag">Battle Royale</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="juego tilt-card">
+            <div class="img-container">
+                <img src="assets/img/gta.jpg" alt="GTA V" onerror="this.style.backgroundColor='#1a1a1a'"/>
+                <div class="img-overlay"></div>
+                <span class="ranking-badge">RANK #6</span>
+            </div>
+            <div class="card-content">
+                <h3>GTA V</h3>
+                <p>El sandbox criminal definitivo que se niega a envejecer. Libertad total.</p>
+                <div class="tags">
+                    <span class="tag">Mundo Abierto</span>
+                    <span class="tag">Multijugador</span>
+                </div>
+            </div>
+        </article>
+
+    </section>
+</main>
+
+<footer>
+    <p>© 2025 GLOBAL GAMING RANKING // SYSTEM ONLINE</p>
+</footer>
+
+<script>
+    // Este script añade un efecto de inclinación 3D a las tarjetas
+    const cards = document.querySelectorAll('.tilt-card');
+
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            // Calcular rotación basada en la posición del mouse
+            const xRotation = -((y - rect.height/2) / 10); // Rota en eje X
+            const yRotation = ((x - rect.width/2) / 10);  // Rota en eje Y
+            
+            // Aplicar transformación
+            card.style.transform = `perspective(1000px) scale(1.02) rotateX(${xRotation}deg) rotateY(${yRotation}deg)`;
+            card.style.borderColor = 'rgba(0, 243, 255, 0.6)';
+        });
+
+        card.addEventListener('mouseleave', () => {
+            // Resetear posición al salir
+            card.style.transform = 'perspective(1000px) scale(1) rotateX(0) rotateY(0)';
+            card.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+        });
+    });
+</script>
+
+</body>
+</html>
