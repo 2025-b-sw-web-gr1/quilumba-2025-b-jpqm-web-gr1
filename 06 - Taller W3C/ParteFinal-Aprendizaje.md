@@ -1,5 +1,5 @@
 #  Presentación del proyecto – Implementación del estándar CSS
--**Joel Patricio Quilumba Morocho**
+### **Joel Patricio Quilumba Morocho**
 Para esta actividad elegí aplicar el estándar **CSS (Cascading Style Sheets)**, uno de los desarrollados por la W3C, y lo apliqué en el diseño de una página web llamada **Top Ranked 2025**, donde presento una lista de videojuegos destacados.
 
 En mi proyecto utilicé CSS para mejorar visualmente la página y darle una apariencia moderna con estilo “futurista” o “Sci-Fi”. Algunas de las principales implementaciones que realicé fueron:
