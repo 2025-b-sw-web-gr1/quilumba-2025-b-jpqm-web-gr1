@@ -1,57 +1,6 @@
-# Patitas Felices: Guía de Cuidados – Express + Handlebars
+# Taller 07 - Motor de Renderizado
 
-Proyecto web desarrollado en Node.js que renderiza una guía interactiva de cuidados para mascotas. Este proyecto cumple con el objetivo del taller de utilizar un motor de renderizado distinto a EJS, implementando **Handlebars (HBS)** junto con **Bootstrap 5** para el diseño.
-
----
-
-## 1. Instalación de dependencias
-
-Si acabas de descargar el proyecto o quieres iniciarlo desde cero:
-
-### 1. Inicializar el proyecto:
-```bash
-npm init -y
-```
-
-### 2. Instalar las dependencias necesarias:
-```bash
-npm install express hbs
-```
-
----
-
-## 2. Ejecución
-
-Para iniciar el servidor web, ejecuta el siguiente comando en la terminal:
-
-```bash
-node app.js
-```
-
-Una vez que aparezca el mensaje en la consola, abre tu navegador en:
-
-👉 **http://localhost:3000**
-
----
-
-## 3. Estructura del Proyecto
-
-```plaintext
-/
-├── public/              
-│   └── images/          # Carpeta de archivos estáticos (imágenes)
-├── views/               
-│   └── home.hbs         # Vista principal usando sintaxis Handlebars
-├── app.js               # Servidor Express y configuración del motor
-├── package.json         # Dependencias del proyecto
-└── README.md            # Documentación e Informe
-```
-
----
-
-## 4. Informe del Taller: Análisis del Motor de Renderizado
-
-A continuación se detallan los puntos requeridos para la evaluación del taller:
+## 1. Informe del Taller: Análisis del Motor de Renderizado
 
 ---
 
@@ -83,5 +32,37 @@ Su principal filosofía es ser **"logic-less"** (sin lógica compleja en la vist
 #### ❌ Desventajas:
 - **Menor flexibilidad inmediata:** No se pueden realizar cálculos rápidos o condiciones complejas directamente en la vista (requiere helpers personalizados).
 - **Curva de aprendizaje:** Requiere aprender la sintaxis específica de los bloques de Handlebars en lugar de reutilizar JavaScript estándar.
+
+---
+Proyecto web desarrollado en Node.js que renderiza una guía interactiva de cuidados para mascotas. Este proyecto cumple con el objetivo del taller de utilizar un motor de renderizado distinto a EJS, implementando **Handlebars (HBS)** junto con **Bootstrap 5** para el diseño.
+
+---
+
+## 2. Ejecución del Taller
+
+Para iniciar el servidor web, ejecuta el siguiente comando en la terminal:
+
+```bash
+node app.js
+```
+
+Una vez que aparezca el mensaje en la consola, abre tu navegador en:
+
+👉 **http://localhost:3000**
+
+---
+
+## 3. Estructura del Proyecto
+
+```plaintext
+/
+├── public/              
+│   └── images/          # Carpeta de archivos estáticos (imágenes)
+├── views/               
+│   └── home.hbs         # Vista principal usando sintaxis Handlebars
+├── app.js               # Servidor Express y configuración del motor
+├── package.json         # Dependencias del proyecto
+└── README.md            # Documentación e Informe
+```
 
 ---
