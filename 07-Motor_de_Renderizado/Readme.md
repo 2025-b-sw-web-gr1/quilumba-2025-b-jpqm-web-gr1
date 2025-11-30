@@ -34,9 +34,6 @@ Su principal filosofía es ser **"logic-less"** (sin lógica compleja en la vist
 - **Curva de aprendizaje:** Requiere aprender la sintaxis específica de los bloques de Handlebars en lugar de reutilizar JavaScript estándar.
 
 ---
-Proyecto web desarrollado en Node.js que renderiza una guía interactiva de cuidados para mascotas. Este proyecto cumple con el objetivo del taller de utilizar un motor de renderizado distinto a EJS, implementando **Handlebars (HBS)** junto con **Bootstrap 5** para el diseño.
-
----
 
 ## 2. Ejecución del Taller
 
