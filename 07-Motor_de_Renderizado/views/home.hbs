@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{tituloPagina}}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; }
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{imagenPrincipal}}');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 40px;
+        }
+        .card-icon { font-size: 3rem; margin-bottom: 15px; }
+        .card { border: none; border-radius: 15px; transition: transform 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px rgba(0,0,0,0.15); }
+        .footer { margin-top: 50px; padding: 20px 0; background-color: #343a40; color: white; }
+    </style>
+</head>
+<body>
+
+    <header class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-3 fw-bold">{{tituloPagina}}</h1>
+            <p class="lead">{{subtitulo}}</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="row g-4"> {{#each consejos}}
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 p-3 text-center">
+                        <div class="card-body">
+                            <div class="card-icon">{{this.icono}}</div>
+                            <h3 class="card-title h5 fw-bold">{{this.titulo}}</h3>
+                            <p class="card-text text-muted">{{this.descripcion}}</p>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+
+        </div>
+    </main>
+
+    <footer class="footer text-center">
+        <div class="container">
+            <p class="mb-0">Hecho con ❤️ para el taller de Motores de Renderizado. © {{anio}}</p>
+            <small>Utilizando Node.js + Express + Handlebars (HBS)</small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
