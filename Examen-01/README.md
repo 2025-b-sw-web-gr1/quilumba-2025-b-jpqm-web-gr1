@@ -210,6 +210,6 @@ Modelos reutilizables, consistentes y descritos con buenas prácticas.
 
 **Joel Quilumba**\
 Escuela Politécnica Nacional\
-Aplicaciones Web -- GR1SW\
-Semestre 2025-B\
+Aplicaciones Web - GR1SW\
+Semestre 2025-B
 
