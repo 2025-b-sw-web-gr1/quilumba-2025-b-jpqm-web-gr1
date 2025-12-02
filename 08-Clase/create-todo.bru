@@ -1,19 +1,19 @@
 meta {
-  name: create-post
+  name: create-todo
   type: http
-  seq: 3
+  seq: 17
 }
 
 post {
-  url: https://jsonplaceholder.typicode.com/posts
+  url: https://jsonplaceholder.typicode.com/todos
   body: json
   auth: inherit
 }
 
 body:json {
   {
-    "title": "foo",
-    "body": "bar",
+    "title": "Buy milk",
+    "completed": false,
     "userId": 1
   }
 }

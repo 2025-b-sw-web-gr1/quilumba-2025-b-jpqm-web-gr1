@@ -1,19 +1,18 @@
 meta {
-  name: create-post
+  name: create-album
   type: http
-  seq: 3
+  seq: 12
 }
 
 post {
-  url: https://jsonplaceholder.typicode.com/posts
+  url: https://jsonplaceholder.typicode.com/albums
   body: json
   auth: inherit
 }
 
 body:json {
   {
-    "title": "foo",
-    "body": "bar",
+    "title": "Vacation",
     "userId": 1
   }
 }
