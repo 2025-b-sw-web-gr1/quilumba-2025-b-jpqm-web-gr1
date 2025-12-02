@@ -1,0 +1,1084 @@
+openapi: 3.0.3
+info:
+  title: JSONPlaceholder Enterprise API Documentation - 001 Examen - Joel Quilumba
+  description: |
+    # Documentación Técnica API REST - Nivel Enterprise
+    
+    Esta especificación OpenAPI 3.0.3 detalla la estructura completa, exhaustiva y profesional de la API **JSONPlaceholder**.
+    Este documento está diseñado para servir como referencia absoluta para arquitectos de software, desarrolladores frontend, backend y equipos de QA.
+    
+    ## 🚀 Visión General del Servicio
+    JSONPlaceholder es una API REST falsa en línea gratuita que se utiliza cuando necesita datos falsos para desarrollo web, pruebas de carga, prototipos y demostraciones técnicas.
+    
+    ### 📋 Características Técnicas
+    * **Protocolo:** HTTP/1.1 y HTTP/2
+    * **Formato de Intercambio:** JSON (application/json)
+    * **Codificación:** UTF-8
+    * **Persistencia:** Volátil (Los cambios no se guardan entre sesiones)
+    
+    ## 🛠 Normas de Consumo
+    
+    ### Paginación y Filtrado
+    La API soporta paginación mediante parámetros de consulta en los endpoints de listado (`GET`):
+    * `_start`: Índice de inicio (offset).
+    * `_limit`: Cantidad de elementos a retornar.
+    * `_sort`: Campo por el cual ordenar.
+    * `_order`: Dirección del ordenamiento (`asc` o `desc`).
+    
+    ### Códigos de Estado
+    Esta API se adhiere a los estándares RFC 7231:
+    * `2xx`: Éxito.
+    * `4xx`: Error del Cliente (Datos inválidos, no encontrado).
+    * `5xx`: Error del Servidor.
+    
+    ## 🔐 Seguridad
+    Aunque es una API pública, se documenta el esquema de seguridad `BearerAuth` para fines educativos y de simulación de entornos protegidos.
+    
+  version: 3.1.0-release
+  termsOfService: https://jsonplaceholder.typicode.com/
+  contact:
+    name: Departamento de Ingeniería de Software
+    url: https://github.com/typicode/json-server
+    email: engineering@jsonplaceholder.example.com
+  license:
+    name: MIT License
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: https://jsonplaceholder.typicode.com
+    description: Servidor de Producción (HTTPS) - Latencia Baja
+  - url: http://jsonplaceholder.typicode.com
+    description: Servidor de Producción (HTTP) - Estándar
+  - url: http://localhost:3000
+    description: Servidor de Desarrollo Local (Mock)
+
+externalDocs:
+  description: Documentación oficial del proyecto original
+  url: https://github.com/typicode/jsonplaceholder
+
+security:
+  - BearerAuth: []
+
+tags:
+  - name: Posts
+    description: |
+      Gestión de artículos del blog. Permite operaciones CRUD completas y filtrado avanzado.
+      Los posts son el recurso central de la plataforma.
+    externalDocs:
+      description: Guía de escritura de posts
+      url: https://jsonplaceholder.typicode.com/guide/
+  - name: Comments
+    description: |
+      Sistema de comentarios anidados asociados a los Posts.
+      Incluye validación de correo electrónico y asociación relacional.
+  - name: Albums
+    description: |
+      Contenedores lógicos para colecciones de fotos.
+      Pertenecen a un usuario específico.
+  - name: Photos
+    description: |
+      Recursos multimedia (imágenes).
+      Incluye URLs para imágenes completas y miniaturas (thumbnails).
+  - name: Todos
+    description: |
+      Sistema de gestión de tareas (To-Do List).
+      Permite marcar tareas como completadas o pendientes.
+  - name: Users
+    description: |
+      Gestión de identidad y perfiles de usuario.
+      Contiene información sensible y detallada (Geo, Company, Address).
+
+paths:
+  # ============================================================
+  # RECURSO: POSTS
+  # ============================================================
+  /posts:
+    get:
+      tags: [Posts]
+      summary: Listar todas las publicaciones
+      description: |
+        Recupera una lista paginada de publicaciones.
+        Por defecto retorna 100 elementos si no se especifican filtros.
+      parameters:
+        - $ref: '#/components/parameters/PageStart'
+        - $ref: '#/components/parameters/PageLimit'
+        - $ref: '#/components/parameters/SortBy'
+        - $ref: '#/components/parameters/OrderBy'
+        - name: userId
+          in: query
+          description: Filtrar publicaciones por ID de usuario específico.
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: Operación exitosa. Retorna array de publicaciones.
+          headers:
+            X-Total-Count:
+              $ref: '#/components/headers/X-Total-Count'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PostResponse'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    
+    post:
+      tags: [Posts]
+      summary: Crear una nueva publicación
+      description: |
+        Crea un nuevo recurso de tipo Post.
+        El ID será asignado automáticamente por el servidor (siempre 101 en simulación).
+      requestBody:
+        required: true
+        description: Objeto JSON con los datos de la publicación.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostRequest'
+      responses:
+        '201':
+          description: Recurso creado exitosamente.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /posts/{id}:
+    parameters:
+      - $ref: '#/components/parameters/PathId'
+    get:
+      tags: [Posts]
+      summary: Obtener publicación por ID
+      description: Retorna un único objeto de publicación basado en su ID numérico.
+      responses:
+        '200':
+          description: Publicación encontrada.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+    put:
+      tags: [Posts]
+      summary: Actualizar publicación (Reemplazo)
+      description: |
+        Actualiza una publicación existente reemplazando todos sus campos.
+        Es necesario enviar el objeto completo.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostRequest'
+      responses:
+        '200':
+          description: Publicación actualizada correctamente.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    patch:
+      tags: [Posts]
+      summary: Actualizar publicación (Parcial)
+      description: |
+        Actualiza campos específicos de una publicación sin necesidad de enviar el objeto completo.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostPatchRequest'
+      responses:
+        '200':
+          description: Publicación modificada parcialmente.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    delete:
+      tags: [Posts]
+      summary: Eliminar publicación
+      description: Elimina permanentemente una publicación del sistema.
+      responses:
+        '200':
+          description: Eliminación exitosa. Retorna objeto vacío.
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /posts/{id}/comments:
+    parameters:
+      - $ref: '#/components/parameters/PathId'
+    get:
+      tags: [Posts, Comments]
+      summary: Obtener comentarios de una publicación
+      description: Endpoint anidado para recuperar todos los comentarios que pertenecen a un post específico.
+      responses:
+        '200':
+          description: Lista de comentarios asociados.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CommentResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # ============================================================
+  # RECURSO: COMMENTS
+  # ============================================================
+  /comments:
+    get:
+      tags: [Comments]
+      summary: Listar todos los comentarios
+      description: Recupera una lista global de comentarios, opcionalmente filtrada.
+      parameters:
+        - name: postId
+          in: query
+          description: ID del post para filtrar comentarios.
+          schema:
+            type: integer
+        - name: email
+          in: query
+          description: Filtrar por email del autor.
+          schema:
+            type: string
+            format: email
+        - $ref: '#/components/parameters/PageLimit'
+      responses:
+        '200':
+          description: Lista de comentarios.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CommentResponse'
+    
+    post:
+      tags: [Comments]
+      summary: Crear comentario
+      description: Agrega un nuevo comentario al sistema.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommentRequest'
+      responses:
+        '201':
+          description: Comentario creado.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+
+  /comments/{id}:
+    parameters:
+      - $ref: '#/components/parameters/PathId'
+    get:
+      tags: [Comments]
+      summary: Obtener comentario por ID
+      responses:
+        '200':
+          description: Detalle del comentario.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+    put:
+      tags: [Comments]
+      summary: Actualizar comentario
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommentRequest'
+      responses:
+        '200':
+          description: Comentario actualizado.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentResponse'
+    
+    delete:
+      tags: [Comments]
+      summary: Eliminar comentario
+      responses:
+        '200':
+          description: Comentario eliminado.
+
+  # ============================================================
+  # RECURSO: ALBUMS
+  # ============================================================
+  /albums:
+    get:
+      tags: [Albums]
+      summary: Listar álbumes
+      parameters:
+        - name: userId
+          in: query
+          description: Filtrar por propietario.
+          schema:
+            type: integer
+        - $ref: '#/components/parameters/PageLimit'
+      responses:
+        '200':
+          description: Lista de álbumes.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AlbumResponse'
+    
+    post:
+      tags: [Albums]
+      summary: Crear álbum
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AlbumRequest'
+      responses:
+        '201':
+          description: Álbum creado.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlbumResponse'
+
+  /albums/{id}:
+    parameters:
+      - $ref: '#/components/parameters/PathId'
+    get:
+      tags: [Albums]
+      summary: Obtener álbum por ID
+      responses:
+        '200':
+          description: Álbum encontrado.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlbumResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+    put:
+      tags: [Albums]
+      summary: Actualizar álbum
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AlbumRequest'
+      responses:
+        '200':
+          description: Álbum actualizado.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlbumResponse'
+    
+    delete:
+      tags: [Albums]
+      summary: Eliminar álbum
+      responses:
+        '200':
+          description: Álbum eliminado.
+
+  /albums/{id}/photos:
+    parameters:
+      - $ref: '#/components/parameters/PathId'
+    get:
+      tags: [Albums, Photos]
+      summary: Obtener fotos del álbum
+      description: Recupera todas las fotos que pertenecen a este álbum.
+      responses:
+        '200':
+          description: Lista de fotos.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PhotoResponse'
+
+  # ============================================================
+  # RECURSO: PHOTOS
+  # ============================================================
+  /photos:
+    get:
+      tags: [Photos]
+      summary: Listar fotos
+      parameters:
+        - name: albumId
+          in: query
+          description: Filtrar por álbum.
+          schema:
+            type: integer
+        - $ref: '#/components/parameters/PageStart'
+        - $ref: '#/components/parameters/PageLimit'
+      responses:
+        '200':
+          description: Lista de fotos.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PhotoResponse'
+    
+    post:
+      tags: [Photos]
+      summary: Subir foto (Simulado)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PhotoRequest'
+      responses:
+        '201':
+          description: Foto registrada.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PhotoResponse'
+
+  /photos/{id}:
+    parameters:
+      - $ref: '#/components/parameters/PathId'
+    get:
+      tags: [Photos]
+      summary: Ver detalles de foto
+      responses:
+        '200':
+          description: Metadatos de la foto.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PhotoResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+    put:
+      tags: [Photos]
+      summary: Actualizar metadatos de foto
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PhotoRequest'
+      responses:
+        '200':
+          description: Foto actualizada.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PhotoResponse'
+    
+    delete:
+      tags: [Photos]
+      summary: Eliminar foto
+      responses:
+        '200':
+          description: Foto eliminada.
+
+  # ============================================================
+  # RECURSO: TODOS
+  # ============================================================
+  /todos:
+    get:
+      tags: [Todos]
+      summary: Listar tareas
+      parameters:
+        - name: userId
+          in: query
+          description: Filtrar por usuario asignado.
+          schema:
+            type: integer
+        - name: completed
+          in: query
+          description: Filtrar por estado.
+          schema:
+            type: boolean
+        - $ref: '#/components/parameters/PageLimit'
+      responses:
+        '200':
+          description: Lista de tareas.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TodoResponse'
+    
+    post:
+      tags: [Todos]
+      summary: Crear tarea
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TodoRequest'
+      responses:
+        '201':
+          description: Tarea creada.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TodoResponse'
+
+  /todos/{id}:
+    parameters:
+      - $ref: '#/components/parameters/PathId'
+    get:
+      tags: [Todos]
+      summary: Consultar tarea
+      responses:
+        '200':
+          description: Detalle de la tarea.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TodoResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+    put:
+      tags: [Todos]
+      summary: Actualizar tarea
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TodoRequest'
+      responses:
+        '200':
+          description: Tarea actualizada.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TodoResponse'
+    
+    delete:
+      tags: [Todos]
+      summary: Eliminar tarea
+      responses:
+        '200':
+          description: Tarea eliminada.
+
+  # ============================================================
+  # RECURSO: USERS
+  # ============================================================
+  /users:
+    get:
+      tags: [Users]
+      summary: Listar usuarios
+      description: Retorna el directorio completo de usuarios con datos complejos.
+      responses:
+        '200':
+          description: Directorio de usuarios.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserResponse'
+    
+    post:
+      tags: [Users]
+      summary: Registrar usuario
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+      responses:
+        '201':
+          description: Usuario registrado.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+
+  /users/{id}:
+    parameters:
+      - $ref: '#/components/parameters/PathId'
+    get:
+      tags: [Users]
+      summary: Ver perfil de usuario
+      responses:
+        '200':
+          description: Perfil completo.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+    put:
+      tags: [Users]
+      summary: Actualizar perfil de usuario
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+      responses:
+        '200':
+          description: Perfil actualizado.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+    
+    delete:
+      tags: [Users]
+      summary: Eliminar usuario
+      responses:
+        '200':
+          description: Usuario eliminado.
+
+  # --- Endpoints Relacionales de Usuario ---
+  /users/{id}/posts:
+    parameters:
+      - $ref: '#/components/parameters/PathId'
+    get:
+      tags: [Users, Posts]
+      summary: Ver publicaciones del usuario
+      responses:
+        '200':
+          description: Lista de posts del usuario.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PostResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /users/{id}/albums:
+    parameters:
+      - $ref: '#/components/parameters/PathId'
+    get:
+      tags: [Users, Albums]
+      summary: Ver álbumes del usuario
+      responses:
+        '200':
+          description: Lista de álbumes del usuario.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AlbumResponse'
+
+  /users/{id}/todos:
+    parameters:
+      - $ref: '#/components/parameters/PathId'
+    get:
+      tags: [Users, Todos]
+      summary: Ver tareas del usuario
+      responses:
+        '200':
+          description: Lista de tareas del usuario.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TodoResponse'
+
+# ============================================================
+# COMPONENTES Y ESQUEMAS
+# ============================================================
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: |
+        Autenticación basada en Token JWT. (Simulado en este entorno).
+
+  headers:
+    X-Total-Count:
+      description: Número total de registros disponibles (para paginación).
+      schema:
+        type: integer
+    X-RateLimit-Limit:
+      description: El número máximo de peticiones permitidas por hora.
+      schema:
+        type: integer
+    X-RateLimit-Remaining:
+      description: El número de peticiones restantes en la ventana de tiempo actual.
+      schema:
+        type: integer
+
+  parameters:
+    PathId:
+      name: id
+      in: path
+      description: Identificador numérico único del recurso.
+      required: true
+      schema:
+        type: integer
+        minimum: 1
+    
+    PageStart:
+      name: _start
+      in: query
+      description: Índice de inicio para paginación (Offset).
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
+    
+    PageLimit:
+      name: _limit
+      in: query
+      description: Límite de resultados por página.
+      schema:
+        type: integer
+        default: 10
+        minimum: 1
+    
+    SortBy:
+      name: _sort
+      in: query
+      description: Campo por el cual ordenar los resultados.
+      schema:
+        type: string
+    
+    OrderBy:
+      name: _order
+      in: query
+      description: Dirección del ordenamiento.
+      schema:
+        type: string
+        enum: [asc, desc]
+        default: asc
+
+  responses:
+    BadRequest:
+      description: 400 Bad Request - La solicitud tiene un formato incorrecto o faltan parámetros obligatorios.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    
+    Unauthorized:
+      description: 401 Unauthorized - Se requiere autenticación para acceder a este recurso.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    
+    Forbidden:
+      description: 403 Forbidden - No tiene permisos para realizar esta acción.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    
+    NotFound:
+      description: 404 Not Found - El recurso solicitado no existe.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    
+    InternalServerError:
+      description: 500 Internal Server Error - Error inesperado en el servidor.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+  schemas:
+    # --- Modelo Genérico de Error ---
+    Error:
+      type: object
+      title: Error Standard
+      description: Estructura estándar para reportar errores.
+      properties:
+        code:
+          type: integer
+          example: 404
+        message:
+          type: string
+          example: "Resource not found"
+        timestamp:
+          type: string
+          format: date-time
+          example: "2025-01-01T12:00:00Z"
+
+    # --- Esquemas POST ---
+    PostRequest:
+      type: object
+      title: Solicitud de Post
+      required: [title, body, userId]
+      properties:
+        userId:
+          type: integer
+          description: ID del usuario autor.
+          example: 1
+        title:
+          type: string
+          description: Título de la publicación.
+          example: "Estrategias de desarrollo 2025"
+        body:
+          type: string
+          description: Contenido textual de la publicación.
+          example: "Este es el contenido principal..."
+    
+    PostPatchRequest:
+      type: object
+      title: Parche de Post
+      properties:
+        title:
+          type: string
+          example: "Título Corregido"
+        body:
+          type: string
+    
+    PostResponse:
+      type: object
+      title: Respuesta de Post
+      allOf:
+        - $ref: '#/components/schemas/PostRequest'
+        - type: object
+          properties:
+            id:
+              type: integer
+              description: ID único generado.
+              example: 101
+
+    # --- Esquemas COMMENT ---
+    CommentRequest:
+      type: object
+      title: Solicitud de Comentario
+      required: [postId, name, email, body]
+      properties:
+        postId:
+          type: integer
+          description: ID del post relacionado.
+        name:
+          type: string
+          description: Nombre del comentarista.
+        email:
+          type: string
+          format: email
+          description: Email de contacto.
+        body:
+          type: string
+          description: Texto del comentario.
+    
+    CommentResponse:
+      type: object
+      title: Respuesta de Comentario
+      allOf:
+        - $ref: '#/components/schemas/CommentRequest'
+        - type: object
+          properties:
+            id:
+              type: integer
+              example: 501
+
+    # --- Esquemas ALBUM ---
+    AlbumRequest:
+      type: object
+      title: Solicitud de Álbum
+      required: [userId, title]
+      properties:
+        userId:
+          type: integer
+        title:
+          type: string
+          example: "Vacaciones 2024"
+    
+    AlbumResponse:
+      type: object
+      title: Respuesta de Álbum
+      allOf:
+        - $ref: '#/components/schemas/AlbumRequest'
+        - type: object
+          properties:
+            id:
+              type: integer
+              example: 101
+
+    # --- Esquemas PHOTO ---
+    PhotoRequest:
+      type: object
+      title: Solicitud de Foto
+      required: [albumId, title, url, thumbnailUrl]
+      properties:
+        albumId:
+          type: integer
+        title:
+          type: string
+        url:
+          type: string
+          format: uri
+        thumbnailUrl:
+          type: string
+          format: uri
+    
+    PhotoResponse:
+      type: object
+      title: Respuesta de Foto
+      allOf:
+        - $ref: '#/components/schemas/PhotoRequest'
+        - type: object
+          properties:
+            id:
+              type: integer
+              example: 5001
+
+    # --- Esquemas TODO ---
+    TodoRequest:
+      type: object
+      title: Solicitud de Tarea
+      required: [userId, title]
+      properties:
+        userId:
+          type: integer
+        title:
+          type: string
+        completed:
+          type: boolean
+          default: false
+    
+    TodoResponse:
+      type: object
+      title: Respuesta de Tarea
+      allOf:
+        - $ref: '#/components/schemas/TodoRequest'
+        - type: object
+          properties:
+            id:
+              type: integer
+              example: 201
+
+    # --- Esquemas USER (Complejos) ---
+    UserRequest:
+      type: object
+      title: Solicitud de Usuario
+      required: [name, username, email]
+      properties:
+        name:
+          type: string
+          example: "Leanne Graham"
+        username:
+          type: string
+          example: "Bret"
+        email:
+          type: string
+          format: email
+          example: "Sincere@april.biz"
+        address:
+          $ref: '#/components/schemas/Address'
+        phone:
+          type: string
+        website:
+          type: string
+        company:
+          $ref: '#/components/schemas/Company'
+    
+    UserResponse:
+      type: object
+      title: Respuesta de Usuario
+      allOf:
+        - $ref: '#/components/schemas/UserRequest'
+        - type: object
+          properties:
+            id:
+              type: integer
+              example: 1
+
+    # --- Sub-esquemas de Usuario ---
+    Address:
+      type: object
+      description: Objeto de dirección física.
+      properties:
+        street:
+          type: string
+          example: "Kulas Light"
+        suite:
+          type: string
+          example: "Apt. 556"
+        city:
+          type: string
+          example: "Gwenborough"
+        zipcode:
+          type: string
+          example: "92998-3874"
+        geo:
+          $ref: '#/components/schemas/Geo'
+
+    Geo:
+      type: object
+      description: Coordenadas geoespaciales.
+      properties:
+        lat:
+          type: string
+          example: "-37.3159"
+        lng:
+          type: string
+          example: "81.1496"
+
+    Company:
+      type: object
+      description: Datos de la organización.
+      properties:
+        name:
+          type: string
+          example: "Romaguera-Crona"
+        catchPhrase:
+          type: string
+          example: "Multi-layered client-server neural-net"
+        bs:
+          type: string
+          example: "harness real-time e-markets"
