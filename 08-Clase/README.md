@@ -75,6 +75,6 @@ Uso de filtros mediante parámetros de consulta.
 3.  **Herencia de Autenticación:** Uso de `auth: inherit` en Bruno para mantener una configuración limpia.
 
 ---
-**Autor:** [Joel Quilumba]
-**Curso:** Aplicaciones Web GR1SW
-**Semestre:** 2025-B
+* **Autor:** [Joel Quilumba]
+* **Curso:** Aplicaciones Web GR1SW
+* **Semestre:** 2025-B
