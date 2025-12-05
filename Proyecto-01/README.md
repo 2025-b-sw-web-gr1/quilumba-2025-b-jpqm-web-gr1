@@ -1,8 +1,7 @@
 # 🛒 API RESTful - Tienda Online "TechStore"
 
-## 👥 Integrantes del Grupo
-* **[NOMBRE DEL INTEGRANTE 1 AQUÍ]**
-* **[NOMBRE DEL INTEGRANTE 2 AQUÍ]**
+## Nombre:
+* **[Joel Patricio Quilumba Morocho]**
 
 ---
 
@@ -65,7 +64,7 @@ Se ha implementado una relación de **Uno a Muchos (1:N)** entre:
 
 El proyecto se organiza en módulos para facilitar la escalabilidad y mantenibilidad:
 ```
-Proyecto-001/
+Proyecto-01/
 │
 ├── store-api.yaml                  # Documentación Swagger (Versión Enterprise v2.1.0)
 ├── README.md                       # Informe Técnico (este archivo)
@@ -776,13 +775,13 @@ Bruno es un cliente HTTP moderno, rápido y open-source ideal para desarrollo de
 1. **Abrir Bruno**
 2. **Importar colección:**
    - Click en **"Open Collection"** en la barra superior
-   - Navega a la carpeta `Proyecto-001`
+   - Navega a la carpeta `Proyecto-01`
    - Selecciona la carpeta completa (Bruno detectará `bruno.json`)
    - Click en **"Open"**
 
 3. **Estructura visible en Bruno:**
 ```
-   📂 Proyecto-001
+   📂 Proyecto-01
    ├── 📁 01-Endpoints-Categorias
    │   ├── 📄 GET - Listar Categorías
    │   ├── 📄 GET - Buscar Categoría por ID
