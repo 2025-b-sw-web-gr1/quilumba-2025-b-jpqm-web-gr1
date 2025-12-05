@@ -843,5 +843,3 @@ Bruno es un cliente HTTP moderno, rápido y open-source ideal para desarrollo de
 **Fecha:** Noviembre 2025  
 
 ---
-
-**¡Gracias por revisar nuestro proyecto! 🚀**
