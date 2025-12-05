@@ -59,13 +59,13 @@ Implementación de estándares W3C. Maquetación temática (Gaming: Elden Ring, 
 
 ## 🚀 Cómo usar este repositorio
 
-### ⚙️ Abrir páginas HTML en Windows
+#### ⚙️ Abrir páginas HTML en Windows
 
 ```powershell
 Start-Process .\01-html\index.html
 ```
 
-### ⚙️ Ejecutar proyectos Node.js
+#### ⚙️ Ejecutar proyectos Node.js
 
 ```powershell
 cd 02-SPA
@@ -73,7 +73,7 @@ npm install
 npm start
 ```
 
-### ⚙️ Testing de APIs con Bruno
+#### ⚙️ Testing de APIs con Bruno
 
 1. Instalar [Bruno](https://www.usebruno.com/)
 2. Abrir la carpeta del proyecto (08-Clase o Proyecto-001)
