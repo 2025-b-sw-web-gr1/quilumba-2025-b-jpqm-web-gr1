@@ -1,7 +1,7 @@
 # 🛒 API RESTful - Tienda Online "TechStore"
 
 ## Autor: 
-**Joel Patricio Quilumba Morocho]*
+**Joel Patricio Quilumba Morocho**
 
 ---
 
@@ -836,11 +836,11 @@ Bruno es un cliente HTTP moderno, rápido y open-source ideal para desarrollo de
 ## 📞 Contacto y Soporte
 
 **Desarrollado por:** 
-Joel Patricio Quilumba Morocho
+*Joel Patricio Quilumba Morocho*
 
 **Institución:** Escuela Politécnica Nacional  
 **Curso:** Aplicaciones Web - GR1SW  
-**Fecha:** Noviembre 2025
+**Fecha:** Noviembre 2025  
 
 ---
 
