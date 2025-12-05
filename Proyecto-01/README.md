@@ -835,7 +835,7 @@ Bruno es un cliente HTTP moderno, rápido y open-source ideal para desarrollo de
 
 ## 📞 Contacto y Soporte
 
-**Desarrollado por:** 
+**Desarrollado por:**  
 *Joel Patricio Quilumba Morocho*
 
 **Institución:** Escuela Politécnica Nacional  
