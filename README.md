@@ -1,4 +1,13 @@
 # quilumba-2025-b-jpqm-web-gr1
-Joel Patricio Quilumba Morocho jpqm
-Hola mundo!
-Soy Joel Quilumba :)
+
+
+## 👤 Información del Estudiante
+
+| | |
+|---|---|
+| **Nombre** | **Joel Patricio Quilumba Morocho** |
+| **Materia** | Aplicaciones Web (GR1SW) |
+| **Semestre** | 2025-B |
+| **Facultad** | Ingeniería de Sistemas - Computacion |
+
+---

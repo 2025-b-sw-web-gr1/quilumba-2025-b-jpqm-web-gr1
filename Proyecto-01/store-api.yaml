@@ -32,7 +32,7 @@ paths:
       description: Retorna el listado de categorías disponibles.
       responses:
         '200':
-          description: Éxito.
+          description: Éxito. 
           content:
             application/json:
               schema:
