@@ -1,0 +1,18 @@
+meta {
+  name: Crear Categoría
+  type: http
+  seq: 3
+}
+
+post {
+  url: https://api.store-example.com/categories
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Electrónica",
+    "description": "Dispositivos tecnológicos"
+  }
+}

@@ -1,0 +1,18 @@
+meta {
+  name: Actualizar Categoría
+  type: http
+  seq: 4
+}
+
+put {
+  url: https://api.store-example.com/categories/1
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Hogar",
+    "description": "Artículos varios"
+  }
+}

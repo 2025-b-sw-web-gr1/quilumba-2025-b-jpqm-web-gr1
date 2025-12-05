@@ -1,0 +1,19 @@
+meta {
+  name: Crear Producto
+  type: http
+  seq: 8
+}
+
+post {
+  url: https://api.store-example.com/products
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Laptop",
+    "price": 800.00,
+    "categoryId": 1
+  }
+}
