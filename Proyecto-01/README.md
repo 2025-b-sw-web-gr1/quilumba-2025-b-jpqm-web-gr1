@@ -799,6 +799,49 @@ Bruno es un cliente HTTP moderno, rápido y open-source ideal para desarrollo de
        └── 📄 DELETE - Eliminar Producto
 ```
 
-#### Ejecución de Pruebas
+### Opción 2: Usando Swagger UI
 
-**Paso 1: Configurar variables de entorno**
+1. **Visualizar la documentación:**
+   - Abre https://editor.swagger.io/
+   - Copia el contenido de `job-board-api.yaml`
+   - Pégalo en el editor
+
+2. **Probar endpoints:**
+   - Click en cualquier endpoint (GET, POST, etc.)
+   - Click en "Try it out"
+   - Completa los parámetros requeridos
+   - Click en "Execute"
+   - Observa la respuesta simulada
+
+
+
+## 📚 Recursos Adicionales
+
+### Documentación REST
+- [REST API Tutorial](https://restfulapi.net/)
+- [HTTP Methods](https://developer.mozilla.org/es/docs/Web/HTTP/Methods)
+- [Status Codes](https://httpstatuses.com/)
+
+### Herramientas
+- [Bruno](https://www.usebruno.com/) - Cliente API open-source
+- [Swagger Editor](https://editor.swagger.io/) - Editor OpenAPI
+- [JSONPlaceholder](https://jsonplaceholder.typicode.com/) - API de prueba
+
+### Aprendizaje
+- [OpenAPI Specification](https://swagger.io/specification/)
+- [RESTful Best Practices](https://restfulapi.net/rest-api-design-tutorial-with-example/)
+
+---
+
+## 📞 Contacto y Soporte
+
+**Desarrollado por:**
+- Joel Patricio Quilumba Morocho
+
+**Institución:** Escuela Politécnica Nacional  
+**Curso:** Aplicaciones Web - GR1SW
+**Fecha:** Noviembre 2025
+
+---
+
+**¡Gracias por revisar nuestro proyecto! 🚀**
