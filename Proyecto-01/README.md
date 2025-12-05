@@ -1,7 +1,7 @@
 # 🛒 API RESTful - Tienda Online "TechStore"
 
-## Nombre:
-* **[Joel Patricio Quilumba Morocho]**
+## Autor:
+**[Joel Patricio Quilumba Morocho]**
 
 ---
 
