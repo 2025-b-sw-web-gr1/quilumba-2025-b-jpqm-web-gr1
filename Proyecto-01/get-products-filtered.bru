@@ -1,0 +1,17 @@
+meta {
+  name: Búsqueda Avanzada (Filtros)
+  type: http
+  seq: 7
+}
+
+get {
+  url: https://api.store-example.com/v1/products?search=Laptop&min_price=500&max_price=1500
+  body: none
+  auth: none
+}
+
+query {
+  search: Laptop
+  min_price: 500
+  max_price: 1500
+}
