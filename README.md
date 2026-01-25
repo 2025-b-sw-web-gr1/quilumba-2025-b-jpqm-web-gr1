@@ -12,6 +12,7 @@ Escuela Politécnica Nacional (2025-B)
 
 Este repositorio contiene todas las prácticas, talleres, exámenes y proyectos desarrollados durante el curso de Aplicaciones Web. Se incluyen ejemplos de HTML, CSS, JavaScript, Single Page Applications (SPA), servicios REST y documentación de APIs.
 
+
 ---
 
 ## 📂 Contenido del Repositorio
@@ -92,3 +93,6 @@ Escuela Politécnica Nacional - 2025-B
 ## 📝 Notas
 
 Este repositorio se actualiza continuamente con nuevas prácticas y proyectos del curso de Aplicaciones Web.
+
+
+Apartir de enero del 2026 son trabajos del 2do Bimestre
