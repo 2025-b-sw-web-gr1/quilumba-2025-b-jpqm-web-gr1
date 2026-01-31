@@ -1,5 +1,6 @@
-# ⚽ Sistema de Gestión de Equipos y Jugadores
+# API RESTful - Examen de Aplicaciones Web (2 Bimestre)
 
+## ⚽ Sistema de Gestión de Equipos y Jugadores
 Una API REST robusta construida con tecnologías modernas para administrar equipos de fútbol y sus plantillas de jugadores.
 
 ---
