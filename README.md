@@ -236,8 +236,6 @@ Escuela Politécnica Nacional - 2025-B
 ### Segundo Bimestre 🔄
 - [x] Examen Web 001
 - [x] Proyecto 001
-- [ ] En desarrollo...
-
 ---
 
 <div align="center">
