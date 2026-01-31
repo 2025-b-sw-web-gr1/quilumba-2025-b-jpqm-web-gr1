@@ -1,98 +1,362 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# ⚽ Sistema de Gestión de Equipos y Jugadores
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Una API REST robusta construida con tecnologías modernas para administrar equipos de fútbol y sus plantillas de jugadores.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+---
 
-## Description
+## 🎯 Acerca del Proyecto
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Este proyecto implementa un sistema backend completo para la gestión de equipos deportivos y sus respectivos jugadores. La aplicación permite realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) sobre ambas entidades, manteniendo la integridad relacional entre equipos y sus jugadores.
 
-## Project setup
+### Características Principales
 
+- Sistema de gestión completo para equipos deportivos
+- Administración de jugadores vinculados a equipos
+- Arquitectura RESTful siguiendo mejores prácticas
+- Base de datos relacional con SQLite
+- Relaciones bidireccionales entre entidades
+
+---
+
+## 🚀 Stack Tecnológico
+
+El proyecto está desarrollado utilizando las siguientes tecnologías:
+
+| Tecnología | Versión | Propósito |
+|------------|---------|-----------|
+| NestJS | 10.2.10 | Framework principal del backend |
+| TypeORM | 0.3.17 | Mapeo objeto-relacional |
+| SQLite | 5.1.6 | Sistema de base de datos |
+| TypeScript | 5.2.2 | Lenguaje de desarrollo |
+
+---
+
+## ⚙️ Configuración Inicial
+
+### Prerrequisitos
+
+Asegúrate de tener instalado:
+- Node.js versión 16 o superior
+- npm (incluido con Node.js) o yarn como gestor de paquetes
+
+### Instalación Paso a Paso
+
+**1.** Clona o descarga el repositorio en tu máquina local
+
+**2.** Accede al directorio del proyecto:
 ```bash
-$ npm install
+cd examen-web-002
 ```
 
-## Compile and run the project
-
+**3.** Instala todas las dependencias necesarias:
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+npm install
 ```
 
-## Run tests
+**4.** La base de datos SQLite se generará automáticamente en la primera ejecución
 
+---
+
+## 💻 Comandos de Ejecución
+
+### Entorno de Desarrollo
+Ejecuta la aplicación con recarga automática de cambios:
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+npm run start:dev
 ```
 
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
+### Compilación
+Genera los archivos de producción:
 ```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+npm run build
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+### Entorno de Producción
+Ejecuta la versión optimizada:
+```bash
+npm run start:prod
+```
 
-## Resources
+> 🌐 La API estará disponible en: **http://localhost:3000**
 
-Check out a few resources that may come in handy when working with NestJS:
+---
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+## 📂 Arquitectura del Proyecto
 
-## Support
+```
+src/
+│
+├── entities/
+│   ├── team.entity.ts        → Definición de la entidad Equipo
+│   └── player.entity.ts      → Definición de la entidad Jugador
+│
+├── dtos/
+│   ├── team.dto.ts           → Objetos de transferencia para Equipos
+│   └── player.dto.ts         → Objetos de transferencia para Jugadores
+│
+├── teams/
+│   ├── teams.controller.ts   → Controlador de endpoints de equipos
+│   ├── teams.service.ts      → Lógica de negocio de equipos
+│   └── teams.module.ts       → Módulo de equipos
+│
+├── players/
+│   ├── players.controller.ts → Controlador de endpoints de jugadores
+│   ├── players.service.ts    → Lógica de negocio de jugadores
+│   └── players.module.ts     → Módulo de jugadores
+│
+├── app.module.ts             → Módulo raíz de la aplicación
+└── main.ts                   → Archivo de entrada principal
+```
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+---
 
-## Stay in touch
+## 🔌 Documentación de Endpoints
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+### Endpoints de Equipos
 
-## License
+| Método | Ruta | Descripción |
+|--------|------|-------------|
+| GET | `/teams` | Lista todos los equipos registrados |
+| GET | `/teams/:id` | Obtiene la información de un equipo específico |
+| GET | `/teams/:id/players` | Consulta todos los jugadores de un equipo |
+| POST | `/teams` | Registra un nuevo equipo |
+| PUT | `/teams/:id` | Modifica los datos de un equipo |
+| DELETE | `/teams/:id` | Elimina un equipo del sistema |
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+### Endpoints de Jugadores
+
+| Método | Ruta | Descripción |
+|--------|------|-------------|
+| GET | `/players` | Lista todos los jugadores registrados |
+| GET | `/players/:id` | Obtiene la información de un jugador específico |
+| POST | `/players` | Registra un nuevo jugador |
+| PUT | `/players/:id` | Modifica los datos de un jugador |
+| DELETE | `/players/:id` | Elimina un jugador del sistema |
+
+---
+
+## 📋 Ejemplos de Uso
+
+### Crear un Equipo Nuevo
+
+**Request:**
+```bash
+POST /teams
+Content-Type: application/json
+
+{
+  "name": "Liverpool FC",
+  "country": "Inglaterra"
+}
+```
+
+**Response:**
+```json
+{
+  "id": 1,
+  "name": "Liverpool FC",
+  "country": "Inglaterra",
+  "players": []
+}
+```
+
+### Registrar un Jugador
+
+**Request:**
+```bash
+POST /players
+Content-Type: application/json
+
+{
+  "name": "Mohamed Salah",
+  "position": "Extremo Derecho",
+  "teamId": 1
+}
+```
+
+**Response:**
+```json
+{
+  "id": 1,
+  "name": "Mohamed Salah",
+  "position": "Extremo Derecho",
+  "teamId": 1,
+  "team": {
+    "id": 1,
+    "name": "Liverpool FC",
+    "country": "Inglaterra"
+  }
+}
+```
+
+### Consultar Jugadores de un Equipo
+
+**Request:**
+```bash
+GET /teams/1/players
+```
+
+**Response:**
+```json
+[
+  {
+    "id": 1,
+    "name": "Mohamed Salah",
+    "position": "Extremo Derecho",
+    "teamId": 1
+  },
+  {
+    "id": 2,
+    "name": "Virgil van Dijk",
+    "position": "Defensa Central",
+    "teamId": 1
+  }
+]
+```
+
+---
+
+## 🗃️ Modelo de Datos
+
+### Entidad: Team (Equipo)
+
+| Campo | Tipo | Restricción | Descripción |
+|-------|------|-------------|-------------|
+| id | Integer | PRIMARY KEY | Identificador único autogenerado |
+| name | String | NOT NULL | Nombre del equipo |
+| country | String | NOT NULL | País de origen |
+| players | Relation | ONE TO MANY | Jugadores asociados |
+
+### Entidad: Player (Jugador)
+
+| Campo | Tipo | Restricción | Descripción |
+|-------|------|-------------|-------------|
+| id | Integer | PRIMARY KEY | Identificador único autogenerado |
+| name | String | NOT NULL | Nombre del jugador |
+| position | String | NOT NULL | Posición en el campo |
+| teamId | Integer | FOREIGN KEY | Referencia al equipo |
+| team | Relation | MANY TO ONE | Equipo al que pertenece |
+
+---
+
+## 🛡️ Manejo de Errores
+
+La API implementa respuestas HTTP estándar:
+
+| Código | Significado |
+|--------|-------------|
+| 200 | Petición procesada correctamente |
+| 201 | Recurso creado exitosamente |
+| 400 | Datos de entrada inválidos |
+| 404 | Recurso no encontrado |
+| 500 | Error interno del servidor |
+
+---
+
+## 🧪 Testing con cURL
+
+### Operaciones con Equipos
+
+```bash
+# Listar equipos
+curl http://localhost:3000/teams
+
+# Crear equipo
+curl -X POST http://localhost:3000/teams \
+  -H "Content-Type: application/json" \
+  -d '{"name":"Paris Saint-Germain","country":"Francia"}'
+
+# Actualizar equipo
+curl -X PUT http://localhost:3000/teams/1 \
+  -H "Content-Type: application/json" \
+  -d '{"name":"PSG","country":"Francia"}'
+
+# Eliminar equipo
+curl -X DELETE http://localhost:3000/teams/1
+```
+
+### Operaciones con Jugadores
+
+```bash
+# Listar jugadores
+curl http://localhost:3000/players
+
+# Crear jugador
+curl -X POST http://localhost:3000/players \
+  -H "Content-Type: application/json" \
+  -d '{"name":"Kylian Mbappé","position":"Delantero","teamId":1}'
+
+# Actualizar jugador
+curl -X PUT http://localhost:3000/players/1 \
+  -H "Content-Type: application/json" \
+  -d '{"position":"Extremo Izquierdo"}'
+
+# Eliminar jugador
+curl -X DELETE http://localhost:3000/players/1
+```
+
+---
+
+## 📊 Características Técnicas
+
+### Implementadas
+
+- ✅ Operaciones CRUD completas para ambas entidades
+- ✅ Relaciones bidireccionales entre equipos y jugadores
+- ✅ Carga automática de relaciones (eager loading)
+- ✅ Sincronización automática del esquema de base de datos
+- ✅ Validación de integridad referencial
+- ✅ Configuración de CORS habilitada
+- ✅ Arquitectura modular y escalable
+- ✅ Inyección de dependencias
+
+### Próximas Mejoras
+
+- 🔄 Implementación de validadores con class-validator
+- 🔄 Sistema de paginación para listados extensos
+- 🔄 Autenticación y autorización con JWT
+- 🔄 Suite de tests unitarios y de integración
+- 🔄 Documentación interactiva con Swagger
+- 🔄 Sistema de logging estructurado
+
+---
+
+## 📖 Scripts Disponibles
+
+```bash
+npm run build       # Compila el proyecto TypeScript
+npm run start       # Inicia el servidor
+npm run start:dev   # Modo desarrollo con hot-reload
+npm run start:prod  # Inicia versión de producción
+npm run lint        # Analiza el código con ESLint
+npm test            # Ejecuta la suite de pruebas
+```
+
+---
+
+## 💾 Base de Datos
+
+El proyecto utiliza SQLite como motor de base de datos. El archivo `db.sqlite` se crea automáticamente en el directorio raíz al iniciar la aplicación por primera vez. TypeORM se encarga de crear y sincronizar las tablas según las entidades definidas.
+
+---
+
+## 👨‍💻 Autor
+
+**Joel Quilumba**  
+Desarrollado como examen académico para Escuela Politécnica Nacional - Aplicaciones Web GR1SW
+
+---
+
+## 📜 Licencia
+
+Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más información.
+
+---
+
+## Agradecimientos
+
+Examen desarrollado aplicando los conocimientos adquiridos en el curso de Desarrollo de Aplicaciones Web.
+
+---
+
+> **Nota:** Este proyecto es de carácter académico y educativo.
