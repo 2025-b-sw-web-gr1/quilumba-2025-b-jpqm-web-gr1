@@ -1,98 +1,281 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# API REST - Proyecto de Aplicaciones Web (2 Bimestre)
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## 🏆 API REST - Sistema de Gestión Deportiva con Documentación Interactiva
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Plataforma backend completa para la administración de equipos y jugadores de fútbol, equipada con documentación automática mediante Swagger/OpenAPI.
 
-## Description
+---
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## 🎯 Descripción General
 
-## Project setup
+Este proyecto consiste en una API RESTful robusta que permite gestionar información de equipos deportivos y sus respectivos jugadores. La aplicación incluye documentación interactiva en tiempo real, facilitando la exploración y prueba de todos los endpoints disponibles sin necesidad de herramientas externas.
 
-```bash
-$ npm install
-```
+**Características destacadas:**
+- Documentación automática con Swagger UI
+- Arquitectura modular y escalable
+- Base de datos SQLite integrada
+- Validación de datos con DTOs
+- Operaciones CRUD completas
 
-## Compile and run the project
+---
 
-```bash
-# development
-$ npm run start
+## 🛠️ Stack Tecnológico
 
-# watch mode
-$ npm run start:dev
+El proyecto implementa las siguientes tecnologías:
 
-# production mode
-$ npm run start:prod
-```
+| Herramienta | Propósito |
+|------------|-----------|
+| **NestJS** | Framework backend progresivo basado en Node.js |
+| **TypeORM** | ORM (Object-Relational Mapping) para gestión de base de datos |
+| **SQLite** | Sistema de base de datos relacional embebido |
+| **Swagger/OpenAPI** | Generación automática de documentación interactiva |
+| **TypeScript** | Lenguaje tipado para desarrollo robusto |
 
-## Run tests
+---
+
+## ⚡ Instalación y Configuración
+
+### Paso 1: Navegar al directorio del proyecto
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+cd "SEGUNDO BIMESTRE/Proyecto-001"
 ```
 
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+### Paso 2: Instalar dependencias principales
 
 ```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+npm install
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+### Paso 3: Instalar módulo de documentación Swagger
 
-## Resources
+```bash
+npm install @nestjs/swagger swagger-ui-express
+```
 
-Check out a few resources that may come in handy when working with NestJS:
+---
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+## 🚀 Ejecutar la Aplicación
 
-## Support
+### Entorno de Desarrollo (con recarga automática)
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```bash
+npm run start:dev
+```
 
-## Stay in touch
+### Compilar para Producción
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+```bash
+npm run build
+```
 
-## License
+### Ejecutar en Producción
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+```bash
+npm run start:prod
+```
+
+> El servidor estará disponible en **http://localhost:3000**
+
+---
+
+## 📖 Acceso a la Documentación Interactiva
+
+Una vez iniciado el servidor, podrás acceder a la interfaz de Swagger en:
+
+```
+🌐 http://localhost:3000/api
+```
+
+### ¿Qué puedes hacer en Swagger UI?
+
+✅ Explorar todos los endpoints disponibles organizados por categorías  
+✅ Ejecutar peticiones HTTP directamente desde el navegador  
+✅ Visualizar modelos de datos con sus propiedades y tipos  
+✅ Revisar ejemplos de peticiones y respuestas  
+✅ Entender los códigos de estado HTTP de cada operación  
+✅ Probar la API sin necesidad de Postman o herramientas similares  
+
+---
+
+## 🔌 Rutas de la API
+
+### 📋 Gestión de Equipos
+
+| Método HTTP | Endpoint | Descripción |
+|-------------|----------|-------------|
+| `GET` | `/teams` | Recupera la lista completa de equipos |
+| `GET` | `/teams/:id` | Consulta un equipo específico por su ID |
+| `POST` | `/teams` | Registra un nuevo equipo en el sistema |
+| `PUT` | `/teams/:id` | Actualiza la información de un equipo |
+| `DELETE` | `/teams/:id` | Elimina un equipo del sistema |
+| `GET` | `/teams/:id/players` | Obtiene todos los jugadores de un equipo |
+
+### ⚽ Gestión de Jugadores
+
+| Método HTTP | Endpoint | Descripción |
+|-------------|----------|-------------|
+| `GET` | `/players` | Recupera la lista completa de jugadores |
+| `GET` | `/players/:id` | Consulta un jugador específico por su ID |
+| `POST` | `/players` | Registra un nuevo jugador en el sistema |
+| `PUT` | `/players/:id` | Actualiza la información de un jugador |
+| `DELETE` | `/players/:id` | Elimina un jugador del sistema |
+
+---
+
+## 💻 Ejemplos de Implementación
+
+### Controlador con Documentación Swagger
+
+```typescript
+@Post()
+@ApiOperation({ summary: 'Registrar un nuevo equipo en el sistema' })
+@ApiResponse({
+  status: 201,
+  description: 'El equipo ha sido creado exitosamente',
+  type: Team,
+})
+@ApiResponse({
+  status: 400,
+  description: 'Datos de entrada inválidos',
+})
+create(@Body() createTeamDto: CreateTeamDto): Promise<Team> {
+  return this.teamsService.create(createTeamDto);
+}
+```
+
+### DTO con Anotaciones de Documentación
+
+```typescript
+export class CreateTeamDto {
+  @ApiProperty({ 
+    example: 'Atlético de Madrid',
+    description: 'Nombre oficial del equipo'
+  })
+  name: string;
+
+  @ApiProperty({ 
+    example: 'España',
+    description: 'País de origen del equipo'
+  })
+  country: string;
+}
+```
+
+---
+
+## ⚙️ Configuración de Swagger
+
+La documentación se configura en el archivo principal `src/main.ts`:
+
+```typescript
+const swaggerConfig = new DocumentBuilder()
+  .setTitle('API - Gestión de Equipos y Jugadores')
+  .setDescription('Documentación completa de endpoints RESTful para administración deportiva')
+  .setVersion('1.0')
+  .addTag('Teams', 'Operaciones relacionadas con equipos')
+  .addTag('Players', 'Operaciones relacionadas con jugadores')
+  .build();
+
+const documentacion = SwaggerModule.createDocument(app, swaggerConfig);
+SwaggerModule.setup('api', app, documentacion);
+```
+
+---
+
+## 📁 Organización del Proyecto
+
+```
+src/
+│
+├── main.ts                          # Bootstrap de la aplicación + configuración Swagger
+├── app.module.ts                    # Módulo raíz que conecta todos los módulos
+│
+├── entities/                        # Definición de entidades de base de datos
+│   ├── team.entity.ts              # Modelo de datos para equipos
+│   └── player.entity.ts            # Modelo de datos para jugadores
+│
+├── teams/                          # Módulo completo de equipos
+│   ├── dto/
+│   │   ├── create-team.dto.ts     # DTO para creación de equipos
+│   │   └── update-team.dto.ts     # DTO para actualización de equipos
+│   ├── teams.controller.ts        # Controlador de rutas HTTP
+│   ├── teams.service.ts           # Lógica de negocio
+│   └── teams.module.ts            # Configuración del módulo
+│
+└── players/                        # Módulo completo de jugadores
+    ├── dto/
+    │   ├── create-player.dto.ts   # DTO para creación de jugadores
+    │   └── update-player.dto.ts   # DTO para actualización de jugadores
+    ├── players.controller.ts      # Controlador de rutas HTTP
+    ├── players.service.ts         # Lógica de negocio
+    └── players.module.ts          # Configuración del módulo
+```
+
+---
+
+## 🎨 Decoradores de Swagger Utilizados
+
+| Decorador | Función |
+|-----------|---------|
+| `@ApiTags()` | Agrupa endpoints bajo una categoría común |
+| `@ApiOperation()` | Proporciona un resumen descriptivo del endpoint |
+| `@ApiResponse()` | Define los posibles códigos de respuesta HTTP |
+| `@ApiProperty()` | Documenta propiedades de DTOs con ejemplos |
+| `@ApiParam()` | Describe parámetros de ruta |
+| `@ApiBody()` | Especifica el esquema del cuerpo de la petición |
+
+---
+
+## 🔍 Ventajas de la Documentación con Swagger
+
+1. **Interfaz Visual Intuitiva** - Navegación fácil por todos los endpoints
+2. **Testing Integrado** - Prueba la API sin salir del navegador
+3. **Actualización Automática** - La documentación se genera desde el código
+4. **Estandarización** - Sigue la especificación OpenAPI 3.0
+5. **Colaboración Mejorada** - Facilita el trabajo en equipo
+6. **Reducción de Errores** - Validación visual de esquemas de datos
+
+---
+
+## 📚 Recursos Adicionales
+
+Para profundizar en las tecnologías utilizadas:
+
+- 📘 [Documentación Oficial de NestJS](https://docs.nestjs.com/)
+- 📗 [Swagger con NestJS - Guía Completa](https://docs.nestjs.com/openapi/introduction)
+- 📙 [Especificación OpenAPI 3.0](https://swagger.io/specification/)
+- 📕 [TypeORM - Documentación](https://typeorm.io/)
+
+---
+
+## 🎓 Contexto Académico
+
+Este proyecto fue desarrollado como parte de las actividades académicas del curso de **Aplicaciones Web GR1SW** en la **Escuela Politécnica Nacional**.
+
+---
+
+## 👨‍💻 Desarrollador
+
+**Joel Quilumba**  
+Estudiante de Ingeniería en Sistemas  
+Escuela Politécnica Nacional - Aplicaciones Web GR1SW
+
+---
+
+## 📝 Notas Importantes
+
+- La base de datos SQLite (`db.sqlite`) se genera automáticamente al ejecutar la aplicación
+- Las tablas se crean y sincronizan automáticamente gracias a TypeORM
+- CORS está habilitado para permitir peticiones desde diferentes orígenes
+- La documentación Swagger se actualiza automáticamente al modificar el código
+
+---
+
+## 📄 Licencia
+
+Proyecto de código abierto bajo Licencia MIT.
+
+---
+
+> 💡 **Consejo:** Explora la documentación interactiva en `/api` para familiarizarte rápidamente con todos los endpoints disponibles.
