@@ -258,7 +258,7 @@ Este proyecto fue desarrollado como parte de las actividades académicas del cur
 ## 👨‍💻 Desarrollador
 
 **Joel Quilumba**  
-Estudiante de Ingeniería en Sistemas  
+Estudiante de Ingeniería en Computacion  
 Escuela Politécnica Nacional - Aplicaciones Web GR1SW
 
 ---
