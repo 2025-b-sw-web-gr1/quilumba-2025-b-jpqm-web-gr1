@@ -4,9 +4,9 @@ Una API REST robusta construida con tecnologías modernas para administrar equip
 
 ---
 
-## 🎯 Acerca del Proyecto
+## 🎯 Acerca del Examen
 
-Este proyecto implementa un sistema backend completo para la gestión de equipos deportivos y sus respectivos jugadores. La aplicación permite realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) sobre ambas entidades, manteniendo la integridad relacional entre equipos y sus jugadores.
+Este examen implementa un sistema backend completo para la gestión de equipos deportivos y sus respectivos jugadores. La aplicación permite realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) sobre ambas entidades, manteniendo la integridad relacional entre equipos y sus jugadores.
 
 ### Características Principales
 
