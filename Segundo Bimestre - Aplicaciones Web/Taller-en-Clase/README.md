@@ -1,4 +1,4 @@
-# 📂 Taller No Recuperable - Aplicaciones Web
+# 📂 Taller No Recuperable (Taller en Clase 06/01/2026)
 
 Este repositorio contiene la solución completa al "Taller no recuperable", dividido en tres etapas que abarcan lógica de programación, análisis de datos y comprensión de seguridad informática.
 
