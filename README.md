@@ -233,7 +233,7 @@ Escuela Politécnica Nacional - 2025-B
 - [x] Testing con Bruno
 - [x] Proyecto integrador
 
-### Segundo Bimestre 🔄
+### Segundo Bimestre ✅
 - [x] Examen Web 001
 - [x] Proyecto 001
 ---
